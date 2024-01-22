@@ -1,0 +1,19 @@
+<div class="container" *ngFor="let serie of data">
+  <div class="title" [style]="{ 'background-color': serie.color }">
+    <h2>{{ serie.name }}</h2>
+    <span> Emitido: {{ serie.description[0].day }} </span><br />
+    <span> Capitulos en total {{ serie.totalChapter }} </span>
+  </div>
+  <div class="content">
+    <div class="card" *ngFor="let chapter of serie.description">
+      <div class="image">
+        <a [href]="chapter.link">
+          <img [src]="chapter.image" width="150px" height="210px" />
+        </a>
+      </div>
+      <div class="description">
+        {{ chapter.chapter }}
+      </div>
+    </div>
+  </div>
+</div>

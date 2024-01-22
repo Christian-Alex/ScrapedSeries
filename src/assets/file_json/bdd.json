@@ -1,0 +1,76 @@
+[
+  {
+    "color": "#a04a16",
+    "name": "World on Fire",
+    "totalChapter": "11",
+    "description": [
+      {
+        "chapter": "2 - 4",
+        "image": "//pelisimg.online/cover/world-on-fire.jpg",
+        "link": "https://cuevana3.ch/episodio/world-on-fire-2 - 4",
+        "day": "Martes"
+      },
+      {
+        "chapter": "2 - 3",
+        "image": "//pelisimg.online/cover/world-on-fire.jpg",
+        "link": "https://cuevana3.ch/episodio/world-on-fire-2 - 3",
+        "day": "Martes"
+      },
+      {
+        "chapter": "2 - 2",
+        "image": "//pelisimg.online/cover/world-on-fire.jpg",
+        "link": "https://cuevana3.ch/episodio/world-on-fire-2 - 2",
+        "day": "Martes"
+      },
+      {
+        "chapter": "2 - 1",
+        "image": "//pelisimg.online/cover/world-on-fire.jpg",
+        "link": "https://cuevana3.ch/episodio/world-on-fire-2 - 1",
+        "day": "Martes"
+      },
+      {
+        "chapter": "1 - 7",
+        "image": "//pelisimg.online/cover/world-on-fire.jpg",
+        "link": "https://cuevana3.ch/episodio/world-on-fire-1 - 7",
+        "day": "Martes"
+      }
+    ]
+  },
+  {
+    "color": "#B9331B",
+    "name": "Mis aventuras con Superman",
+    "totalChapter": "10",
+    "description": [
+      {
+        "chapter": "1 - 10",
+        "image": "//pelisimg.online/cover/mis-aventuras-con-superman.jpg",
+        "link": "https://cuevana3.ch/episodio/mis-aventuras-con-superman-1 - 10",
+        "day": "Martes"
+      },
+      {
+        "chapter": "1 - 9",
+        "image": "//pelisimg.online/cover/mis-aventuras-con-superman.jpg",
+        "link": "https://cuevana3.ch/episodio/mis-aventuras-con-superman-1 - 9",
+        "day": "Martes"
+      },
+      {
+        "chapter": "1 - 8",
+        "image": "//pelisimg.online/cover/mis-aventuras-con-superman.jpg",
+        "link": "https://cuevana3.ch/episodio/mis-aventuras-con-superman-1 - 8",
+        "day": "Martes"
+      },
+      {
+        "chapter": "1 - 7",
+        "image": "//pelisimg.online/cover/mis-aventuras-con-superman.jpg",
+        "link": "https://cuevana3.ch/episodio/mis-aventuras-con-superman-1 - 7",
+        "day": "Martes"
+      },
+      {
+        "chapter": "1 - 6",
+        "image": "//pelisimg.online/cover/mis-aventuras-con-superman.jpg",
+        "link": "https://cuevana3.ch/episodio/mis-aventuras-con-superman-1 - 6",
+        "day": "Martes"
+      }
+    ]
+  }
+]

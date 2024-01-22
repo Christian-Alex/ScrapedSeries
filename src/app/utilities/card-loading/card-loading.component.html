@@ -1,0 +1,16 @@
+<div class="container" *ngFor="let serie of range(cantCards)">
+  <div class="title">
+    <h2 class="loader-color loader-title"></h2>
+    <div class="loader-color loader-text"></div>
+    <div class="loader-color loader-text"></div>
+    <div class="loader-color loader-text"></div>
+    <div class="loader-color loader-text"></div>
+    <div class="loader-color loader-text" style="width: 50%"></div>
+  </div>
+  <div class="content">
+    <div class="card" *ngFor="let chapter of range(frontPages)">
+      <div class="image loader-white" style="width: 150px; height: 215px"></div>
+      <div class="description loader-white loader-text"></div>
+    </div>
+  </div>
+</div>

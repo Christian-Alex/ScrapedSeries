@@ -1,0 +1,40 @@
+:root {
+  --width-screen: 80.8em;
+}
+
+.tester > div {
+  width: var(--width-screen);
+}
+
+.commands {
+  display: flex;
+  width: 100%;
+}
+
+.message {
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.input-minimal {
+  width: 80%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-minimal:focus {
+  border-color: #3da5f4;
+  box-shadow: inset 0px 0px 0px 1px #3da5f4;
+}
+
+.btn-group {
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
