@@ -8,6 +8,7 @@ This project was generated with [Angular CLI] version 16.2.4 and this project wa
 * ✅ Read files and load static data
 * ✅ Asynchronous function management
 * ✅ Security with CORS management
+* ✅ Handling reactive forms
 * ✅ Basics of DOS attacks
 
 ## Development server
