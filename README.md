@@ -1,6 +1,14 @@
-# ScrapingSeries
+# Scraped Series with Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+This project was generated with [Angular CLI] version 16.2.4 and this project was made to practice and improve my skills with angular and typescript. While doing this project, I touched on DOS basics.
+
+### Developed themes
+✅ Scrapping from frontend
+✅ Creation and implementation of utility components
+✅ Read files and load static data
+✅ Asynchronous function management
+✅ Security with CORS management
+✅ Basics of DOS attacks
 
 ## Development server
 
