@@ -16,42 +16,28 @@
         Probar
       </button>
       <button class="btn btn-primary" (click)="clearURL()">Limpiar</button>
-      <button class="btn btn-info" (click)="findSeries()">Buscar</button>
+      <button class="btn btn-info" (click)="searchSeries()">Buscar</button>
     </div>
   </div>
   <div
     class="message"
-    onclick="AnswerSitie.visible = false"
     [ngClass]="AnswerSitie.class"
     *ngIf="AnswerSitie.visible"
   >
-    {{ AnswerSitie.text }}
+    <div>{{ AnswerSitie.text }}</div>
+    <button
+      class="btn x"
+      [ngClass]="AnswerSitie.class"
+      (click)="AnswerSitie.visible = false"
+    >
+      &times;
+    </button>
   </div>
 </div>
 
 <div class="container-series">
   <ng-container *ngIf="SeriesCollection.length > 0; else NotContain">
-    <!-- <div class="container" *ngFor="let serie of SeriesCollection">
-      <div class="title" [style]="{ 'background-color': serie.color }">
-        <h2>{{ serie.name }}</h2>
-        <span> Emitido: {{ serie.description[0].day }} </span><br />
-        <span> Capitulos en total {{ serie.totalChapter }} </span>
-      </div>
-      <div class="content">
-        <div class="card" *ngFor="let chapter of serie.description">
-          <div class="image">
-            <a [href]="chapter.link">
-              <img [src]="chapter.image" width="150px" height="210px" />
-            </a>
-          </div>
-          <div class="description">
-            {{ chapter.chapter }}
-          </div>
-        </div>
-      </div>
-    </div> -->
-    
-    <app-card-serie [data]="SeriesCollection" class="container"></app-card-serie>
+    <app-card-serie [data]="SeriesCollection"></app-card-serie>
   </ng-container>
   <ng-template #NotContain>
     <app-card-loading [cantCards]="2" [frontPages]="2"></app-card-loading>

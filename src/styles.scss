@@ -2,6 +2,11 @@
   --width-screen: 80.8em;
 }
 /* You can add global styles to this file, and also import other style files */
+.x {
+  cursor: pointer;
+  font-size: 20px;
+}
+
 .btn {
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
@@ -106,23 +111,20 @@
 
 ////////////////////
 
-.container-series {
+.container-series app-card-serie , app-card-loading {
   display: flex;
   flex-wrap: wrap;
   width: var(--width-screen);
   height: 41em;
   justify-content: space-between;
-
-  border-style: dashed;
 }
 
 .container {
   display: flex;
-  width: 35em;
+  width: 39.5em;
   height: 17.7em;
   margin-top: 10px;
   margin-bottom: 10px;
-  border-style: dashed;
 }
 
 .title {

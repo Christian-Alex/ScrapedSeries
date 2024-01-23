@@ -1,15 +1,15 @@
-import { IButton, IInterfaceSerie, ISerie } from './interfaces/interfaces';
+import { IButton, ISerie } from './interfaces/interfaces';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { envSeries } from './enviroment/enviroment_series';
 import { envRoot } from './enviroment/enviroment';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   Days = [
@@ -36,40 +36,17 @@ export class AppComponent {
     this.chargeData();
   }
 
+  /**
+   * Clear field from tested URL
+   */
   clearURL(): void {
     this.SitieByTester.reset();
     this.AnswerSitie.visible = false;
   }
 
-  getSeriesURL(): IInterfaceSerie[] {
-    return [
-      {
-        url: `${envRoot.UrlBaseCuevana}/serie/la-casa-de-papel-berlin`,
-        color: '#07807a',
-      },
-      {
-        url: `${envRoot.UrlBaseCuevana}/serie/mis-aventuras-con-superman`,
-        color: '#B9331B'
-      },
-      {
-        url: `${envRoot.UrlBaseCuevana}/serie/akuma-kun`,
-        color: '#CE1D47'
-      },
-      {
-        url: `${envRoot.UrlBaseCuevana}/serie/el-monstruo-de-la-vieja-seul`,
-        color: '#AA7D2A'
-      },
-      {
-        url: `${envRoot.UrlBaseCuevana}/serie/marvel-daredevil`,
-        color: '#0A0603'
-      },
-      {
-        url: `${envRoot.UrlBaseNinja}/online/psycho-pass-110823/`,
-        color: '#099D9D',
-      },
-    ];
-  }
-
+  /**
+   * Test URL inserted in field
+   */
   testerURL(): void {
     let sitie = this.SitieByTester.value;
     if (sitie) {
@@ -99,15 +76,21 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Load saved JSON elements as an example
+   */
   async chargeData() {
     const srcBDD = await fetch('assets/file_json/bdd.json');
     const dataStorage: ISerie[] = await srcBDD.json();
     this.SeriesCollection = dataStorage;
   }
 
-  async findSeries() {
+  /**
+   * Search for series with registered URL
+   */
+  async searchSeries() {
     this.SeriesCollection = [];
-    let UrlSeries = this.getSeriesURL();
+    let UrlSeries = envSeries;
     for (let info of UrlSeries) {
       const context = await axios.get(info.url);
       const $ = cheerio.load(context.data);
@@ -118,12 +101,21 @@ export class AppComponent {
         serie = this.buildFormatAnimeNinja($, info.color);
       }
       this.SeriesCollection.push(serie);
-      await new Promise(resolve => 
-        setTimeout(resolve, 1000)  
-      );
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
 
+  /**
+   * Construction of logic-based elements for Cuevana.
+   * @param $ context<axios>
+   * @param color #748987
+   * @returns {
+   *  name: titleName,
+   *  totalChapter: allChapter,
+   *  description: [],
+   *  color: color,
+   * }
+   */
   buildFormatCuevana($: cheerio.CheerioAPI, color: string): ISerie {
     const titleName = $('header .Title').text();
     const allChapter = $('.tvshow > p').eq(1).find('span').text();
@@ -140,8 +132,8 @@ export class AppComponent {
       const link = <string>element.find('a').attr('href');
       const day = new Date(element.find('p').text()).getDay();
       serie.description.push({
-        chapter: this.getChapter(chapter).replace('x', ' - '),
-        image: (!image.includes('data:image')) ? image : this.ImgDefault,
+        chapter: this.getChapter(chapter),
+        image: !(image.indexOf('data:image') > 1) ? image : this.ImgDefault,
         link: `${envRoot.UrlBaseCuevana}${link}`,
         day: this.Days[day],
       });
@@ -149,6 +141,17 @@ export class AppComponent {
     return serie;
   }
 
+  /**
+   * Construction of logic-based elements for Anime Online Ninja.
+   * @param $ context<axios>
+   * @param color #748987
+   * @returns {
+   *  name: titleName,
+   *  totalChapter: allChapter,
+   *  description: [],
+   *  color: color,
+   * }
+   */
   buildFormatAnimeNinja($: cheerio.CheerioAPI, color: string): ISerie {
     const titleName = $('.sheader .data h1').text();
     const allChapter = $('#seasons .se-c .se-a > ul > li').length;
@@ -164,7 +167,9 @@ export class AppComponent {
         const chapter = <string>element.find('.numerando').text();
         const image = <string>element.find('img').attr('src');
         const link = <string>element.find('.episodiotitle a').attr('href');
-        const day = new Date(element.find('.episodiotitle .date').text()).getDay();
+        const day = new Date(
+          element.find('.episodiotitle .date').text()
+        ).getDay();
         serie.description.push({
           chapter: chapter,
           image: image ? image : '',
@@ -176,8 +181,20 @@ export class AppComponent {
     return serie;
   }
 
+  /**
+   * Extract the full name and return only the episode and season.
+   * @param chapter EpisodioName 1x5
+   * @returns 0 - 0
+   */
   getChapter(chapter: string): string {
-    const match = chapter.match(/(\d+)x(\d+)/);
-    return match ? match[0].toString() : '0x0';
+    let match = chapter.match(/(\d+)x(\d+)/);
+    let result = '0 - 0';
+    if (match) result = match[0].toString().replace('x', ' - ');
+    return result;
   }
+
+  /*
+    Add logic depending on the site and its structure.
+    ...
+  */
 }
