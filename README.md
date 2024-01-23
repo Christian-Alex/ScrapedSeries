@@ -9,6 +9,7 @@ This project was generated with [Angular CLI] version 16.2.4 and this project wa
 * ✅ Asynchronous function management
 * ✅ Security with CORS management
 * ✅ Basics of DOS attacks
+* ✅ Unit testing implementation
 
 ## Development server
 
